@@ -21,3 +21,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/register_doctor', 'DoctorController@register_form');
 Route::post('/register_doctor', 'DoctorController@register');
 Route::get('/doctors', 'DoctorController@showAll');
+Route::get('/edit-doctor/{id}', 'DoctorController@edit');
+Route::post('/update-doctor', 'DoctorController@update');
+Route::get('/delete-doctor/{id}', 'DoctorController@delete');

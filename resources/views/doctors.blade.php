@@ -15,6 +15,7 @@
                                 <th>Email</th>
                                 <th>Department</th>
                                 <th>Degree</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -24,6 +25,10 @@
                                 <td>{{$doctor->user->email}}</td>
                                 <td>{{$doctor->department}}</td>
                                 <td>{{$doctor->degree}}</td>
+                                <td>
+                                    <a href="{{url('edit-doctor/'.$doctor->id)}}"> <button class="btn btn-warning">Edit</button> </a>
+                                    <a href="{{url('delete-doctor/'.$doctor->id)}}"> <button class="btn btn-danger">Delete</button> </a>
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>

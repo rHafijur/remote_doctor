@@ -29,4 +29,26 @@ class DoctorController extends Controller
        $doctors=Doctor::all();
        return view("doctors",compact('doctors'));
    }
+   public function edit($id){
+       $doctor=Doctor::find($id);
+       return view("edit_doctor",compact('doctor'));
+   }
+   public function update(Request $request){
+    $doctor=Doctor::find($request->id);
+    $doctor->user->name=$request->name;
+    $doctor->user->email=$request->email;
+    $doctor->user->password=$request->password;
+    $doctor->user->save();
+    $doctor->department=$request->department;
+    $doctor->degree=$request->degree;
+    $doctor->save();
+    return redirect('doctors');
+   }
+   public function delete($id){
+       $doc= Doctor::find($id);
+       $user=$doc->user;
+       $doc->delete();
+       $user->delete();
+       return redirect()->back();
+   }
 }
